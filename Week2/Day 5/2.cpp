@@ -16,7 +16,6 @@ int find(int x, int  *a, int n){
 		m = (l + r) / 2;
 		if(x > a[m]) l = m + 1;
 		else r = m;
-
 	}
 
 	int d1 = mabs(x - a[m]);
@@ -42,6 +41,10 @@ int main(){
 
 	int n,k,t;
 	cin >> n >> k;
+
+	if(n == 1){
+		cout << 1/(n-1);
+	}
 	int a[n];
 
 	for(int i = 0; i < n; ++i){
