@@ -2,8 +2,11 @@
 
 using namespace std;
 
-int a[101];
+
+int a[100001];
 int len = 0;
+int first = 1;
+int last = 0;
 
 int size(){
 	return len;
@@ -11,21 +14,25 @@ int size(){
 
 int push(int x){
 	len++;
-	a[len] = x;
+	last++;
+	a[last] = x;
 }
 
 int pop(){
-	int res = a[len];
+	int res = a[first];
 	len--;
+	first++;
 	return res;   
 }
 
-int back(){
-	return a[len];
+int front(){
+	return a[first];
 }
 
 void clear(){
 	len = 0;
+	first = 1;
+	last = 0;
 }
 
 
@@ -44,8 +51,8 @@ string operation;
 			cout << "ok" << endl;
 		}else if(operation == "pop"){
 			cout << pop() << endl;
-		}else if(operation == "back"){
-			cout << back() << endl;
+		}else if(operation == "front"){
+			cout << front() << endl;
 		}else if(operation == "size"){
 			cout << size() << endl;
 		}else if(operation == "clear"){
