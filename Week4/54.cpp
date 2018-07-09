@@ -28,7 +28,7 @@ int main(){
 			while(st.size() != 0){
 				st.pop();
 			}
-
+			
 
 			cout << "ok" << endl;
 		}

@@ -5,23 +5,36 @@ using namespace std;
 
 int a[100001];
 int len = 0;
-int first = 1;
-int last = 0;
+int first = 50001;
+int last = 50000;
 
 int size(){
 	return len;
 }
 
-int push(int x){
+int push_front(int x){
+	len++;
+	first--;
+	a[first] = x;
+}
+
+int push_back(int x){
 	len++;
 	last++;
 	a[last] = x;
 }
 
-int  pop(){
+int pop_front(){
 	int res = a[first];
 	len--;
 	first++;
+	return res;   
+}
+
+int pop_back(){
+	int res = a[last];
+	len--;
+	last--;
 	return res;   
 }
 
@@ -29,10 +42,14 @@ int front(){
 	return a[first];
 }
 
+int back(){
+	return a[last];
+}
+
 void clear(){
 	len = 0;
-	first = 1;
-	last = 0;
+	first = 50001;
+	last = 50000;
 }
 
 
@@ -44,15 +61,24 @@ string operation;
 	while(true){
 		cin >> operation;
 		if(operation == "exit") break;
-		if(operation == "push"){
+		if(operation == "push_front"){
 			int x;
 			cin >> x;
-			push(x);
+			push_front(x);
 			cout << "ok" << endl;
-		}else if(operation == "pop"){
-			cout << pop() << endl;
+		}else if(operation == "push_back"){
+			int x;
+			cin >> x;
+			push_back(x);
+			cout << "ok" << endl;
+		}else if(operation == "pop_front"){
+			cout << pop_front() << endl;
+		}else if(operation == "pop_back"){
+			cout << pop_back() << endl;
 		}else if(operation == "front"){
 			cout << front() << endl;
+		}else if(operation == "back"){
+			cout << back() << endl;
 		}else if(operation == "size"){
 			cout << size() << endl;
 		}else if(operation == "clear"){
@@ -65,3 +91,6 @@ string operation;
 
 	return 0;
 }
+
+
+
